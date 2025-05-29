@@ -11,19 +11,20 @@ class Login:
         self.root.title("Login Page")
         self.root.geometry("800x500")
 
+
         self.frame_kiri = customtkinter.CTkFrame(root)
         self.frame_kiri.pack(side="left", fill="both", expand=True)
 
-        self.frame_kanan = customtkinter.CTkFrame(root,fg_color="#3f174f")
+        self.frame_kanan = customtkinter.CTkFrame(root, fg_color="#3f174f")
         self.frame_kanan.pack(side="left", fill="both", expand=True)
 
         self.tengah_framekiri = customtkinter.CTkFrame(self.frame_kiri)
         self.tengah_framekiri.pack(expand = True)
         
-        self.label_judul = customtkinter.CTkLabel(self.tengah_framekiri, text="SIGN IN", font=("Arial", 20, "bold"))
+        self.label_judul = customtkinter.CTkLabel(self.tengah_framekiri, text="SIGN IN", font=("Times New Roman", 20, "bold"))
         self.label_judul.pack(pady=20, padx=10)
 
-        self.label_judul = customtkinter.CTkLabel(self.frame_kanan, text="Welcome", font=("Arial", 50, "bold"))
+        self.label_judul = customtkinter.CTkLabel(self.frame_kanan, text="Welcome", font=("Times New Roman", 50, "bold"))
         self.label_judul.pack(pady=(150,15), padx=10)
 
         self.entry_username = customtkinter.CTkEntry(self.tengah_framekiri,placeholder_text="Username", width=200)
@@ -35,7 +36,6 @@ class Login:
         self.button = customtkinter.CTkButton(self.tengah_framekiri , text= "Login")
         self.button.pack(anchor = "center", pady=(30,20), padx=40)
     
-
 if __name__ == "__main__":
     root = customtkinter.CTk()
     app = Login(root)
