@@ -14,6 +14,12 @@ class Login:
         self.label_judul = customtkinter.CTkLabel(root, text="Login Page", font=("Arial", 20, "bold"))
         self.label_judul.pack(pady=20, padx=10)
 
+        self.frame_kiri = customtkinter.CTkFrame(root, width=400, height=500)
+        self.frame_kiri.pack(side="left", fill="both", expand=True)
+
+        self.frame_kanan = customtkinter.CTkFrame(root, width=400, height=500, fg_color="purple")
+        self.frame_kanan.pack(side="right", fill="both", expand=True)
+
 if __name__ == "__main__":
     root = customtkinter.CTk()
     app = Login(root)
