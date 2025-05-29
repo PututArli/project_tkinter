@@ -11,12 +11,11 @@ class Login:
         self.root.title("Login Page")
         self.root.geometry("800x500")
 
-
-        self.frame_kiri = customtkinter.CTkFrame(root, width=400, height=500)
+        self.frame_kiri = customtkinter.CTkFrame(root)
         self.frame_kiri.pack(side="left", fill="both", expand=True)
 
-        self.frame_kanan = customtkinter.CTkFrame(root, width=400, height=500, fg_color="purple")
-        self.frame_kanan.pack(side="right", fill="both", expand=True)
+        self.frame_kanan = customtkinter.CTkFrame(root, fg_color="purple")
+        self.frame_kanan.pack(side="left", fill="both", expand=True)
 
         self.label_judul = customtkinter.CTkLabel(self.frame_kiri, text="SIGN IN", font=("Arial", 20, "bold"))
         self.label_judul.pack(pady=20, padx=10)
