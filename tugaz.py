@@ -14,7 +14,7 @@ class Login:
         self.frame_kiri = customtkinter.CTkFrame(root)
         self.frame_kiri.pack(side="left", fill="both", expand=True)
 
-        self.frame_kanan = customtkinter.CTkFrame(root,fg_color="purple")
+        self.frame_kanan = customtkinter.CTkFrame(root,fg_color="#3f174f")
         self.frame_kanan.pack(side="left", fill="both", expand=True)
 
         self.tengah_framekiri = customtkinter.CTkFrame(self.frame_kiri)
@@ -23,18 +23,16 @@ class Login:
         self.label_judul = customtkinter.CTkLabel(self.tengah_framekiri, text="SIGN IN", font=("Arial", 20, "bold"))
         self.label_judul.pack(pady=20, padx=10)
 
-        self.label_username = customtkinter.CTkLabel(self.tengah_framekiri, text="Username")
-        self.label_username.pack(pady=30, padx=20)
-        self.entry_username = customtkinter.CTkEntry(self.tengah_framekiri, width=200)
+        self.entry_username = customtkinter.CTkEntry(self.tengah_framekiri,placeholder_text="Username", width=200)
         self.entry_username.pack(pady=30, padx=20)
 
-        self.label_password = customtkinter.CTkLabel(self.tengah_framekiri, text="Password")
-        self.label_password.pack(pady=40, padx=30)
-        self.entry_password = customtkinter.CTkEntry(self.tengah_framekiri, width=200, show="*")
-        self.entry_password.pack(pady=40, padx=30)
+        self.entry_password = customtkinter.CTkEntry(self.tengah_framekiri, width=200,placeholder_text="Password", show="*")
+        self.entry_password.pack(pady=30, padx=30)
 
         self.button = customtkinter.CTkButton(self.tengah_framekiri , text= "Login")
         self.button.pack(anchor = "center")
+
+    
 
 if __name__ == "__main__":
     root = customtkinter.CTk()
