@@ -16,7 +16,7 @@ class Login:
         self.frame_kiri = customtkinter.CTkFrame(root,width = 400 , height= 500, fg_color="transparent")
         self.frame_kiri.pack(side="left", fill="both", expand=True)
 
-        img = Image.open("D:/SDA TKINTER/project_tkinter/blur.jpg")
+        img = Image.open("blur.jpg")
         img = img.resize((2000,2000))
         self.bg_image = ImageTk.PhotoImage(img)
 
