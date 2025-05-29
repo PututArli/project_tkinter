@@ -39,7 +39,10 @@ class Login:
         self.entry_password.pack(pady=(15,0), padx=30)
 
         self.label_welcome = customtkinter.CTkLabel(self.frame_kanan, text="Welcome", font=("Times New Roman", 50, "bold"))
-        self.label_welcome.place(relx=0.5, rely=0.3, anchor="center")
+        self.label_welcome.place(relx=0.5, rely=0.25, anchor="center")
+
+        self.subtext1 = customtkinter.CTkLabel(self.frame_kanan, text="isi kata2 disini", font=("Arial", 16, "italic"))
+        self.subtext1.place(relx=0.5, rely=0.325, anchor="center")
 
         self.button = customtkinter.CTkButton(self.tengah_framekiri , text= "Login")
         self.button.pack(anchor = "center", pady=(30,20), padx=40)
