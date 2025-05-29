@@ -1,4 +1,5 @@
 import tkinter
+from tkinter import ttk, messagebox,Label
 import customtkinter
 from PIL import Image, ImageTk
 
@@ -12,10 +13,17 @@ class Login:
         self.root.geometry("800x500")
 
 
-        self.frame_kiri = customtkinter.CTkFrame(root)
+        self.frame_kiri = customtkinter.CTkFrame(root,width = 400 , height= 500, fg_color="transparent")
         self.frame_kiri.pack(side="left", fill="both", expand=True)
 
-        self.frame_kanan = customtkinter.CTkFrame(root, fg_color="#3f174f")
+        img = Image.open("D:/SDA TKINTER/project_tkinter/blur.jpg")
+        img = img.resize((2000,2000))
+        self.bg_image = ImageTk.PhotoImage(img)
+
+        self.bg_label = Label(self.frame_kiri, image=self.bg_image)
+        self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+        self.frame_kanan = customtkinter.CTkFrame(root,width = 400 , height= 500,  fg_color="#3f174f")
         self.frame_kanan.pack(side="left", fill="both", expand=True)
 
         self.tengah_framekiri = customtkinter.CTkFrame(self.frame_kiri)
