@@ -3,7 +3,7 @@ from tkinter import ttk, messagebox,Label
 import customtkinter
 from PIL import Image, ImageTk
 
-customtkinter.set_appearance_mode("dark") 
+customtkinter.set_appearance_mode("light") 
 customtkinter.set_default_color_theme("blue")
 
 class Welcome:
