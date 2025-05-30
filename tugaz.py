@@ -45,16 +45,16 @@ class Welcome:
         self.entry_password.place(relx=0.5, rely=0.425, anchor="center", relwidth=0.9, relheight=0.1)
 
         self.canvas_welcome = customtkinter.CTkCanvas(self.frame_kanan,width = 400, height= 100,highlightthickness=0)
-        self.canvas_welcome.place(relx=0.5, rely=0.25, anchor="center")
+        self.canvas_welcome.place(relx=0.5, rely=0.45, anchor="center")
         self.canvas_welcome.create_image(0 , 0 ,image=self.bg_kanan_image, anchor="nw")
         
         self.canvas_welcome.create_text(200,50,text="Welcome",font=("Times New Roman", 50, "bold"),fill="black")
 
         self.canvas_subtext1 = customtkinter.CTkCanvas(self.frame_kanan,width = 400, height= 50,highlightthickness=0)
-        self.canvas_subtext1.place(relx=0.5, rely=0.325, anchor="center")
+        self.canvas_subtext1.place(relx=0.5, rely=0.522, anchor="center")
         self.canvas_subtext1.create_image(0 , 0 ,image=self.bg_kanan_image, anchor="nw")        
 
-        self.canvas_subtext1.create_text(200,25,text="lorem ipsum dolor",font=("Times New Roman", 25 , "bold"),fill="black")
+        self.canvas_subtext1.create_text(200,25,text="to our projects",font=("Times New Roman", 25 , "bold"),fill="black")
 
         self.button_login = customtkinter.CTkButton(self.tengah_framekiri , text= "Login",font=("Times New Roman", 20, "bold"), command=self.Login)
         self.button_login.place(relx=0.5, rely=0.8, anchor="center", relwidth=0.9, relheight=0.1)
