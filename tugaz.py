@@ -22,7 +22,7 @@ class Welcome:
         self.bg_kiri_label = Label(self.frame_kiri, image=self.bg_kiri_image)
         self.bg_kiri_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        self.frame_kanan = customtkinter.CTkFrame(root,width = 400 , height= 500,  fg_color="transparent")
+        self.frame_kanan = customtkinter.CTkFrame(root,width = 400 , height= 500)
         self.frame_kanan.pack(side="left", fill="both", expand=True)
 
         img_kanan = Image.open("awan.png")
@@ -44,11 +44,17 @@ class Welcome:
         self.entry_password = customtkinter.CTkEntry(self.tengah_framekiri, width=200, placeholder_text="Password", show="*")
         self.entry_password.place(relx=0.5, rely=0.425, anchor="center", relwidth=0.9, relheight=0.1)
 
-        self.label_welcome = customtkinter.CTkLabel(self.frame_kanan, text="Welcome", font=("Times New Roman", 50, "bold"), fg_color="transparent")
-        self.label_welcome.place(relx=0.5, rely=0.25, anchor="center")
+        self.canvas_welcome = customtkinter.CTkCanvas(self.frame_kanan,width = 400, height= 100,highlightthickness=0)
+        self.canvas_welcome.place(relx=0.5, rely=0.25, anchor="center")
+        self.canvas_welcome.create_image(0 , 0 ,image=self.bg_kanan_image, anchor="nw")
+        
+        self.canvas_welcome.create_text(200,50,text="Welcome",font=("Times New Roman", 50, "bold"),fill="black")
 
-        self.subtext1 = customtkinter.CTkLabel(self.frame_kanan, text="lorem ipsum dolor", font=("Arial", 16, "italic"))
-        self.subtext1.place(relx=0.5, rely=0.325, anchor="center")
+        self.canvas_subtext1 = customtkinter.CTkCanvas(self.frame_kanan,width = 400, height= 50,highlightthickness=0)
+        self.canvas_subtext1.place(relx=0.5, rely=0.325, anchor="center")
+        self.canvas_subtext1.create_image(0 , 0 ,image=self.bg_kanan_image, anchor="nw")        
+
+        self.canvas_subtext1.create_text(200,25,text="lorem ipsum dolor",font=("Times New Roman", 25 , "bold"),fill="black")
 
         self.button_login = customtkinter.CTkButton(self.tengah_framekiri , text= "Login",font=("Times New Roman", 20, "bold"), command=self.Login)
         self.button_login.place(relx=0.5, rely=0.8, anchor="center", relwidth=0.9, relheight=0.1)
