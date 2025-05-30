@@ -15,15 +15,22 @@ class Welcome:
         self.frame_kiri = customtkinter.CTkFrame(root,width = 400 , height= 500, fg_color="transparent")
         self.frame_kiri.pack(side="left", fill="both", expand=True)
 
-        img = Image.open("blur.jpg")
-        img = img.resize((2000,2000))
-        self.bg_image = ImageTk.PhotoImage(img)
+        img_kiri = Image.open("blur.jpg")
+        img_kiri = img_kiri.resize((2000,2000))
+        self.bg_kiri_image = ImageTk.PhotoImage(img_kiri)
 
-        self.bg_label = Label(self.frame_kiri, image=self.bg_image)
-        self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+        self.bg_kiri_label = Label(self.frame_kiri, image=self.bg_kiri_image)
+        self.bg_kiri_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        self.frame_kanan = customtkinter.CTkFrame(root,width = 400 , height= 500,  fg_color="#3A59D1")
+        self.frame_kanan = customtkinter.CTkFrame(root,width = 400 , height= 500,  fg_color="transparent")
         self.frame_kanan.pack(side="left", fill="both", expand=True)
+
+        img_kanan = Image.open("awan.png")
+        img_kanan = img_kanan.resize((2000,2000))
+        self.bg_kanan_image = ImageTk.PhotoImage(img_kanan)
+
+        self.bg_kanan_label = Label(self.frame_kanan, image=self.bg_kanan_image)
+        self.bg_kanan_label.place(x=0, y=0, relwidth=1, relheight=1)
 
         self.tengah_framekiri = customtkinter.CTkFrame(self.frame_kiri)
         self.tengah_framekiri.place(relx=0.5, rely=0.5, anchor="center", relwidth=0.45, relheight=0.455)
@@ -37,7 +44,7 @@ class Welcome:
         self.entry_password = customtkinter.CTkEntry(self.tengah_framekiri, width=200, placeholder_text="Password", show="*")
         self.entry_password.place(relx=0.5, rely=0.425, anchor="center", relwidth=0.9, relheight=0.1)
 
-        self.label_welcome = customtkinter.CTkLabel(self.frame_kanan, text="Welcome", font=("Times New Roman", 50, "bold"))
+        self.label_welcome = customtkinter.CTkLabel(self.frame_kanan, text="Welcome", font=("Times New Roman", 50, "bold"), fg_color="transparent")
         self.label_welcome.place(relx=0.5, rely=0.25, anchor="center")
 
         self.subtext1 = customtkinter.CTkLabel(self.frame_kanan, text="lorem ipsum dolor", font=("Arial", 16, "italic"))
