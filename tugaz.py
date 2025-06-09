@@ -97,14 +97,6 @@ class Welcome:
         self.frame_tengah.pack_forget()
         self.frame_sda.pack(fill="both", expand=True)
 
-    def Login(self):
-        username = self.entry_username.get()
-        password = self.entry_password.get()
-        if username == "WisnuXiaomi" and password == "635":
-            messagebox.showinfo("Login Sukses!", "Selamat datang")
-        else:
-            messagebox.showerror("Login Gagal", "Coba lagi!")
-
 if __name__ == "__main__":
     root = customtkinter.CTk()
     app = Welcome(root)
