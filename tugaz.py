@@ -32,11 +32,46 @@ class Welcome:
 
         self.canvas_subtext1.create_text(200,25,text="to our projects",font=("Arial", 25 , "bold"),fill="#d19a03")
 
-        self.button_start = customtkinter.CTkButton(self.frame_tengah , text= "Start",font=("Times New Roman", 20, "bold"), command=self.Login)
+        self.button_start = customtkinter.CTkButton(self.frame_tengah , text= "Start",font=("Times New Roman", 20, "bold"), command=self.sda)
         self.button_start.place(relx=0.5, rely=0.6, anchor="center", relwidth=0.2, relheight=0.04)
 
-        self.button_about = customtkinter.CTkButton(self.frame_tengah , text= "About Us",font=("Times New Roman", 20, "bold"), command=self.Login)
+        self.button_about = customtkinter.CTkButton(self.frame_tengah , text= "About Us",font=("Times New Roman", 20, "bold"), command=self.aboutus)
         self.button_about.place(relx=0.5, rely=0.7, anchor="center", relwidth=0.2, relheight=0.04)
+
+
+        self.frame_about = customtkinter.CTkFrame(self.root)
+
+        self.canvas_about = customtkinter.CTkCanvas(self.frame_about,width = 400, height= 100,highlightthickness=0)
+        self.canvas_about.place(relx=0.5, rely=0.2, anchor="center")
+        self.canvas_about.create_text(200,50,text="Perkenalan",font=("Times New Roman", 50, "bold"),fill="#d19a03")
+
+        self.button_back1 = customtkinter.CTkButton(self.frame_about , text= "Back",font=("Times New Roman", 20, "bold"), command=self.welcomepage)
+        self.button_back1.place(relx=0.5, rely=0.8, anchor="center", relwidth=0.2, relheight=0.04)
+
+
+        self.frame_sda = customtkinter.CTkFrame(self.root)
+
+        self.canvas_sda = customtkinter.CTkCanvas(self.frame_sda,width = 400, height= 100,highlightthickness=0)
+        self.canvas_sda.place(relx=0.5, rely=0.2, anchor="center")
+        self.canvas_sda.create_text(200,50,text="SDA",font=("Times New Roman", 50, "bold"),fill="#d19a03")
+
+        self.button_back2 = customtkinter.CTkButton(self.frame_sda , text= "Back",font=("Times New Roman", 20, "bold"), command=self.welcomepage)
+        self.button_back2.place(relx=0.5, rely=0.8, anchor="center", relwidth=0.2, relheight=0.04)
+
+
+
+    def welcomepage(self):
+        self.frame_about.pack_forget()
+        self.frame_sda.pack_forget()
+        self.frame_tengah.pack(fill="both", expand=True)
+
+    def aboutus(self):
+        self.frame_tengah.pack_forget()
+        self.frame_about.pack(fill="both", expand=True)
+
+    def sda(self):
+        self.frame_tengah.pack_forget()
+        self.frame_sda.pack(fill="both", expand=True)
 
 
     def Login(self):
