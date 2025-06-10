@@ -9,7 +9,7 @@ customtkinter.set_default_color_theme("dark-blue")
 class Welcome:
     def __init__(self, root):
         self.root = root
-        self.root.title("Login Page")
+        self.root.title("Score")
         self.root.geometry("1200x700")
         self.root.configure(bg="#fdf6e3") 
         self.frame_tengah = customtkinter.CTkFrame(root, fg_color="#fdf6e3")
@@ -55,31 +55,69 @@ class Welcome:
         self.button_about.place(relx=0.5, rely=0.7, anchor="center")
 
         # Frame about us
-        self.frame_about = customtkinter.CTkFrame(self.root)
+        self.frame_about = customtkinter.CTkFrame(self.root,fg_color="#fdf6e3")
 
-        self.canvas_about = customtkinter.CTkCanvas(self.frame_about, width=400, height=100, highlightthickness=0)
-        self.canvas_about.place(relx=0.5, rely=0.2, anchor="center")
-        self.canvas_about.create_text(200, 50, text="Perkenalan",
-                                      font=("Times New Roman", 50, "bold"),
-                                      fill="#d19a03")
+        self.label_about = customtkinter.CTkLabel(self.frame_about,
+                                                    text="Nama Anggota Kelompok",
+                                                    font=("Times New Roman", 55, "bold"),
+                                                    text_color="#d19a03",
+                                                    fg_color="#fdf6e3")
+        self.label_about.place(relx=0.5, rely=0.25, anchor="center")
+        
+        self.label_anggota1 = customtkinter.CTkLabel(self.frame_about,
+                                                    text="Athallah Wildan Rafi (2417051004)",
+                                                    font=("Times New Roman", 25, "bold"),
+                                                    text_color="#d19a03",
+                                                    fg_color="#fdf6e3")
+        self.label_anggota1.place(relx=0.5, rely=0.35, anchor="center")
 
+        self.label_anggota2 = customtkinter.CTkLabel(self.frame_about,
+                                                    text="Wisnu Wira Winata (2417051035)",
+                                                    font=("Times New Roman", 25, "bold"),
+                                                    text_color="#d19a03",
+                                                    fg_color="#fdf6e3")
+        self.label_anggota2.place(relx=0.5, rely=0.4, anchor="center")
+
+        self.label_anggota3 = customtkinter.CTkLabel(self.frame_about,
+                                                    text="Rafael Putut Arli (2417051042)",
+                                                    font=("Times New Roman", 25, "bold"),
+                                                    text_color="#d19a03",
+                                                    fg_color="#fdf6e3")
+        self.label_anggota3.place(relx=0.5, rely=0.45, anchor="center")
+
+        self.label_anggota4 = customtkinter.CTkLabel(self.frame_about,
+                                                    text="Miqdad Dzakiy Arroyan (2417051044)",
+                                                    font=("Times New Roman", 25, "bold"),
+                                                    text_color="#d19a03",
+                                                    fg_color="#fdf6e3")
+        self.label_anggota4.place(relx=0.5, rely=0.5, anchor="center")
+
+        # Tombol back AboutUs
         self.button_back1 = customtkinter.CTkButton(self.frame_about, text="Back",
                                                     font=("Times New Roman", 20, "bold"),
+                                                    fg_color="#d19a03",
+                                                    hover_color="#f0b400",
+                                                    text_color="white",
                                                     command=self.welcomepage)
         self.button_back1.place(relx=0.5, rely=0.8, anchor="center",
                                 relwidth=0.2, relheight=0.04)
 
         # Frame SDA
-        self.frame_sda = customtkinter.CTkFrame(self.root)
+        self.frame_sda = customtkinter.CTkFrame(self.root, fg_color="#fdf6e3")
 
-        self.canvas_sda = customtkinter.CTkCanvas(self.frame_sda, width=400, height=100, highlightthickness=0)
-        self.canvas_sda.place(relx=0.5, rely=0.2, anchor="center")
-        self.canvas_sda.create_text(200, 50, text="SDA",
-                                    font=("Times New Roman", 50, "bold"),
-                                    fill="#d19a03")
+        self.label_about = customtkinter.CTkLabel(self.frame_sda,
+                                                    text="Score",
+                                                    font=("Times New Roman", 55, "bold"),
+                                                    text_color="#d19a03",
+                                                    fg_color="#fdf6e3")
+        self.label_about.place(relx=0.5, rely=0.25, anchor="center")
 
+        # Tombol back Score
         self.button_back2 = customtkinter.CTkButton(self.frame_sda, text="Back",
                                                     font=("Times New Roman", 20, "bold"),
+                                                    fg_color="#d19a03",
+                                                    hover_color="#f0b400",
+                                                    text_color="white",
                                                     command=self.welcomepage)
         self.button_back2.place(relx=0.5, rely=0.8, anchor="center",
                                 relwidth=0.2, relheight=0.04)
