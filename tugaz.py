@@ -4,15 +4,16 @@ import customtkinter
 from PIL import Image
 
 
-
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("dark-blue") 
 
 class Welcome:
     def __init__(self, root):
         self.root = root
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        self.root.geometry(f"{screen_width}x{screen_height}+0+0")
         self.root.title("Score")
-        self.root.geometry("1200x700")
         self.root.configure(bg="#fdf6e3") 
         self.frame_tengah = customtkinter.CTkFrame(root, fg_color="#ebd6bd")
         self.frame_tengah.pack(fill="both", expand=True)
