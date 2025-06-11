@@ -1,6 +1,8 @@
 import tkinter
 from tkinter import messagebox
 import customtkinter
+from PIL import Image
+
 
 
 customtkinter.set_appearance_mode("light")
@@ -12,11 +14,17 @@ class Welcome:
         self.root.title("Score")
         self.root.geometry("1200x700")
         self.root.configure(bg="#fdf6e3") 
-        self.frame_tengah = customtkinter.CTkFrame(root, fg_color="#fdf6e3")
+        self.frame_tengah = customtkinter.CTkFrame(root, fg_color="#E6D0B5")
         self.frame_tengah.pack(fill="both", expand=True)
+
+
+        self.bg_image = customtkinter.CTkImage(Image.open("welcome.png"), size=(1200, 700))
+        self.bg_label = customtkinter.CTkLabel(self.frame_tengah, image=self.bg_image, text="")
+        self.bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
         self.kiri_score = 0
         self.kanan_score = 0
+
 
         #Text welcome
         self.label_welcome = customtkinter.CTkLabel(self.frame_tengah,
