@@ -14,7 +14,7 @@ class Welcome:
         self.root.title("Score")
         self.root.geometry("1200x700")
         self.root.configure(bg="#fdf6e3") 
-        self.frame_tengah = customtkinter.CTkFrame(root, fg_color="#E6D0B5")
+        self.frame_tengah = customtkinter.CTkFrame(root, fg_color="#ebd6bd")
         self.frame_tengah.pack(fill="both", expand=True)
 
 
@@ -30,14 +30,16 @@ class Welcome:
         self.label_welcome = customtkinter.CTkLabel(self.frame_tengah,
                                                     text="Welcome",
                                                     font=("Times New Roman", 60, "bold"),
-                                                    text_color="#d19a03")
-        self.label_welcome.place(relx=0.5, rely=0.25, anchor="center")
+                                                    text_color="#d19a03",
+                                                    bg_color="#f5f6ec")
+        self.label_welcome.place(relx=0.5, rely=0.3, anchor="center")
         
         self.label_subtext = customtkinter.CTkLabel(self.frame_tengah,
                                                     text="to our projects",
                                                     font=("Arial", 25, "bold"),
-                                                    text_color="#d19a03")
-        self.label_subtext.place(relx=0.5, rely=0.32, anchor="center")
+                                                    text_color="#d19a03",
+                                                    bg_color="#f5f6ec")
+        self.label_subtext.place(relx=0.5, rely=0.37, anchor="center")
 
         # Tombol start
         self.button_start = customtkinter.CTkButton(self.frame_tengah,
@@ -50,7 +52,7 @@ class Welcome:
                                                     corner_radius=30,
                                                     width=250,
                                                     height=50)
-        self.button_start.place(relx=0.5, rely=0.6, anchor="center")
+        self.button_start.place(relx=0.5, rely=0.7, anchor="center")
 
         # Tombol about us
         self.button_about = customtkinter.CTkButton(self.frame_tengah,
@@ -63,7 +65,7 @@ class Welcome:
                                                     corner_radius=30,
                                                     width=250,
                                                     height=50)
-        self.button_about.place(relx=0.5, rely=0.7, anchor="center")
+        self.button_about.place(relx=0.5, rely=0.8, anchor="center")
 
         # Frame about us
         self.frame_about = customtkinter.CTkFrame(self.root,fg_color="#fdf6e3")
