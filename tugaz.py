@@ -71,50 +71,61 @@ class Welcome:
         # Frame about us
         self.frame_about = customtkinter.CTkFrame(self.root,fg_color="#fdf6e3")
 
+
+        self.bg_image_about = customtkinter.CTkImage(Image.open("anggota.png"), size=(1200, 700))
+        self.bg_label_about = customtkinter.CTkLabel(self.frame_about, image=self.bg_image_about, text="")
+        self.bg_label_about.place(relx=0.5, rely=0.5, anchor="center") 
+
         self.label_about = customtkinter.CTkLabel(self.frame_about,
                                                     text="Nama Anggota Kelompok",
                                                     font=("Times New Roman", 55, "bold"),
-                                                    text_color="#d19a03",
-                                                    fg_color="#fdf6e3")
+                                                    text_color="white",
+                                                    fg_color="transparent")
         self.label_about.place(relx=0.5, rely=0.25, anchor="center")
         
         self.label_anggota1 = customtkinter.CTkLabel(self.frame_about,
                                                     text="Athallah Wildan Rafi (2417051004)",
                                                     font=("Times New Roman", 25, "bold"),
-                                                    text_color="#d19a03",
-                                                    fg_color="#fdf6e3")
+                                                    text_color="white",
+                                                    fg_color="transparent")
         self.label_anggota1.place(relx=0.5, rely=0.35, anchor="center")
 
         self.label_anggota2 = customtkinter.CTkLabel(self.frame_about,
                                                     text="Wisnu Wira Winata (2417051035)",
                                                     font=("Times New Roman", 25, "bold"),
-                                                    text_color="#d19a03",
-                                                    fg_color="#fdf6e3")
+                                                    text_color="white",
+                                                    fg_color="transparent")
         self.label_anggota2.place(relx=0.5, rely=0.4, anchor="center")
 
         self.label_anggota3 = customtkinter.CTkLabel(self.frame_about,
                                                     text="Rafael Putut Arli (2417051042)",
                                                     font=("Times New Roman", 25, "bold"),
-                                                    text_color="#d19a03",
-                                                    fg_color="#fdf6e3")
+                                                    text_color="white",
+                                                    fg_color="transparent")
         self.label_anggota3.place(relx=0.5, rely=0.45, anchor="center")
 
         self.label_anggota4 = customtkinter.CTkLabel(self.frame_about,
                                                     text="Miqdad Dzakiy Arroyan (2417051044)",
                                                     font=("Times New Roman", 25, "bold"),
-                                                    text_color="#d19a03",
-                                                    fg_color="#fdf6e3")
+                                                    text_color="white",
+                                                    fg_color="transparent")
         self.label_anggota4.place(relx=0.5, rely=0.5, anchor="center")
 
         # Tombol back AboutUs
-        self.button_back1 = customtkinter.CTkButton(self.frame_about, text="Back",
-                                                    font=("Times New Roman", 20, "bold"),
-                                                    fg_color="#d19a03",
-                                                    hover_color="#f0b400",
-                                                    text_color="white",
-                                                    command=self.welcomepage)
+        self.button_back1 = customtkinter.CTkButton(self.frame_about, 
+                                            text="Back",
+                                            font=("Times New Roman", 20, "bold"),
+                                            fg_color="#d19a03",          
+                                            hover_color="#f0b400",         
+                                            text_color="white",
+                                            corner_radius=30,
+                                            command=self.welcomepage)
         self.button_back1.place(relx=0.5, rely=0.8, anchor="center",
-                                relwidth=0.2, relheight=0.04)
+                        relwidth=0.2, relheight=0.04)
+
+        
+
+        
 
         # Frame SDA
         self.frame_sda = customtkinter.CTkFrame(self.root, fg_color="#fdf6e3")
