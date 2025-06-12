@@ -95,6 +95,8 @@ class Welcome:
         self.frame_score_kiri = customtkinter.CTkFrame(self.frame_sda,fg_color="#005EFF",width=500,height=500)
         self.frame_score_kanan = customtkinter.CTkFrame(self.frame_sda,fg_color="#FF0000", width=500,height=500)
         self.frame_atas = customtkinter.CTkFrame(self.frame_sda,fg_color="#000000",width=500, height=100)
+        self.frame_bawah = customtkinter.CTkFrame(self.frame_sda, fg_color="#000000",width=500, height=80)
+        
 
         # Score
 
@@ -197,6 +199,51 @@ class Welcome:
                                                     command=self.welcomepage)
         self.button_back2.place(relx=0.95, rely=0.05, anchor="center",
                                 relwidth=0.05, relheight=0.04)
+        
+        #tombol kiri
+        self.button_show_hide = customtkinter.CTkButton(self.frame_bawah, text="Show/Hide Stopwatch",
+                                                        font=("Arial", 14),
+                                                        fg_color="green", text_color="white",
+                                                        width=140, corner_radius=10)
+        self.button_show_hide.pack(side="left", padx=10, pady=10)
+
+        self.button_shikkaku_ao = customtkinter.CTkButton(self.frame_bawah, text="Shikkaku",
+                                                          font=("Arial", 14),
+                                                          fg_color="#0047ab", text_color="white",
+                                                          width=100, corner_radius=10)
+        self.button_shikkaku_ao.pack(side="left", padx=10, pady=10)
+
+        self.button_kikken_ao = customtkinter.CTkButton(self.frame_bawah, text="Kikken",
+                                                        font=("Arial", 14),
+                                                        fg_color="#0047ab", text_color="white",
+                                                        width=100, corner_radius=10)
+        self.button_kikken_ao.pack(side="left", padx=10, pady=10)
+
+        # Tombol Done di tengah
+        self.button_done = customtkinter.CTkButton(self.frame_bawah, text="Done",
+                                                   font=("Arial", 14, "bold"),
+                                                   fg_color="limegreen", text_color="white",
+                                                   width=140, corner_radius=10)
+        self.button_done.pack(side="left", padx=40, pady=10)
+
+        # Tombol kanan
+        self.button_shikkaku_aka = customtkinter.CTkButton(self.frame_bawah, text="Shikkaku",
+                                                           font=("Arial", 14),
+                                                           fg_color="#8b0000", text_color="white",
+                                                           width=100, corner_radius=10)
+        self.button_shikkaku_aka.pack(side="left", padx=10, pady=10)
+
+        self.button_kikken_aka = customtkinter.CTkButton(self.frame_bawah, text="Kikken",
+                                                         font=("Arial", 14),
+                                                         fg_color="#8b0000", text_color="white",
+                                                         width=100, corner_radius=10)
+        self.button_kikken_aka.pack(side="left", padx=10, pady=10)
+
+        self.button_reset = customtkinter.CTkButton(self.frame_bawah, text="Reset",
+                                                    font=("Arial", 14, "bold"),
+                                                    fg_color="red", text_color="white",
+                                                    width=100, corner_radius=10)
+        self.button_reset.pack(side="left", padx=20, pady=10)
 
     def welcomepage(self):
         self.frame_about.pack_forget()
@@ -211,8 +258,10 @@ class Welcome:
         self.frame_tengah.pack_forget()
         self.frame_sda.pack(fill="both", expand=True)
         self.frame_atas.pack(side="top",fill="x", expand=False)
+        self.frame_bawah.pack(side="bottom", fill="x", expand=False)
         self.frame_score_kanan.pack(side= "right",fill="both", expand=True)
         self.frame_score_kiri.pack(side= "left",fill= "both" , expand=True)
+        
 
     def add_kiri(self):
         self.kiri_score += 1
