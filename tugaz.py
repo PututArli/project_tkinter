@@ -93,7 +93,15 @@ class Welcome:
         self.frame_sda = customtkinter.CTkFrame(self.root,fg_color="black",width=1000,height=1000)
 
         self.frame_score_kiri = customtkinter.CTkFrame(self.frame_sda,fg_color="#005EFF",width=500,height=500)
+        self.bg_image_benderakiri = customtkinter.CTkImage(Image.open("blue flag.png"), size=(200, 200))
+        self.bg_label_benderakiri = customtkinter.CTkLabel(self.frame_score_kiri, image=self.bg_image_benderakiri, text="")
+        self.bg_label_benderakiri.place(relx=0.7, rely=0.4, anchor="center")
+
         self.frame_score_kanan = customtkinter.CTkFrame(self.frame_sda,fg_color="#FF0000", width=500,height=500)
+        self.bg_image_benderakanan = customtkinter.CTkImage(Image.open("red flag.png"), size=(200, 200))
+        self.bg_label_benderakanan = customtkinter.CTkLabel(self.frame_score_kanan, image=self.bg_image_benderakanan, text="")
+        self.bg_label_benderakanan.place(relx=0.3, rely=0.4, anchor="center")
+
         self.frame_atas = customtkinter.CTkFrame(self.frame_sda,fg_color="#000000",width=500, height=100)
         self.frame_bawah = customtkinter.CTkFrame(self.frame_sda, fg_color="#000000",width=500, height=80)
         
