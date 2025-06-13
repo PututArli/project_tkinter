@@ -225,22 +225,25 @@ class Welcome:
         self.button_done = customtkinter.CTkButton(self.frame_bawah, text="Done",
                                                    font=("Arial", 14, "bold"),
                                                    fg_color="limegreen", text_color="white",
-                                                   width=140, corner_radius=10)
+                                                   width=140, corner_radius=10,
+                                                   command=self.done)
         self.button_done.pack(side="left", padx=40, pady=10)
 
         # Tombol kanan
         self.button_shikkaku_aka = customtkinter.CTkButton(self.frame_bawah, text="Shikkaku",
                                                            font=("Arial", 14),
-                                                           fg_color="#8b0000", text_color="white",
+                                                           fg_color="#FF0000", text_color="white",
                                                            width=100, corner_radius=10,
-                                                           command=self.shikaku_aka)
+                                                           command=self.shikaku_aka,
+                                                           hover_color="#8b0000")
         self.button_shikkaku_aka.pack(side="left", padx=10, pady=10)
 
         self.button_kikken_aka = customtkinter.CTkButton(self.frame_bawah, text="Kikken",
                                                          font=("Arial", 14),
-                                                         fg_color="#8b0000", text_color="white",
+                                                         fg_color="#FF0000", text_color="white",
                                                          width=100, corner_radius=10,
-                                                         command=self.kikken_aka)
+                                                         command=self.kikken_aka,
+                                                         hover_color="#8b0000")
         self.button_kikken_aka.pack(side="left", padx=10, pady=10)
 
         self.button_reset = customtkinter.CTkButton(self.frame_bawah, text="Reset",
@@ -294,6 +297,19 @@ class Welcome:
 
     def kikken_aka(self):
         messagebox.showinfo("Kikken Aka", "Aka tidak dapat hadir di dalam pertandingan.")
+
+    def done(self):
+        division = self.entry_division.get()
+        nama1 = self.entry_name1.get()
+        nama2 = self.entry_name2.get()
+        
+        if not division or not nama1 or not nama2:
+            messagebox.showwarning("Input Error", "Isi semua kolom!.")
+            return
+        
+        messagebox.showinfo("Hasil Pertandingan:", f"Divisi: {division}\n"
+                            f"Score {nama1} : {self.kiri_score}\n"
+                            f"Score {nama2} : {self.kanan_score}")
 
 if __name__ == "__main__":
     root = customtkinter.CTk()
