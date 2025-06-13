@@ -210,13 +210,15 @@ class Welcome:
         self.button_shikkaku_ao = customtkinter.CTkButton(self.frame_bawah, text="Shikkaku",
                                                           font=("Arial", 14),
                                                           fg_color="#0047ab", text_color="white",
-                                                          width=100, corner_radius=10)
+                                                          width=100, corner_radius=10,
+                                                          command=self.shikaku_ao)
         self.button_shikkaku_ao.pack(side="left", padx=10, pady=10)
 
         self.button_kikken_ao = customtkinter.CTkButton(self.frame_bawah, text="Kikken",
                                                         font=("Arial", 14),
                                                         fg_color="#0047ab", text_color="white",
-                                                        width=100, corner_radius=10)
+                                                        width=100, corner_radius=10,
+                                                        command=self.kikken_ao)
         self.button_kikken_ao.pack(side="left", padx=10, pady=10)
 
         # Tombol Done di tengah
@@ -230,13 +232,15 @@ class Welcome:
         self.button_shikkaku_aka = customtkinter.CTkButton(self.frame_bawah, text="Shikkaku",
                                                            font=("Arial", 14),
                                                            fg_color="#8b0000", text_color="white",
-                                                           width=100, corner_radius=10)
+                                                           width=100, corner_radius=10,
+                                                           command=self.shikaku_aka)
         self.button_shikkaku_aka.pack(side="left", padx=10, pady=10)
 
         self.button_kikken_aka = customtkinter.CTkButton(self.frame_bawah, text="Kikken",
                                                          font=("Arial", 14),
                                                          fg_color="#8b0000", text_color="white",
-                                                         width=100, corner_radius=10)
+                                                         width=100, corner_radius=10,
+                                                         command=self.kikken_aka)
         self.button_kikken_aka.pack(side="left", padx=10, pady=10)
 
         self.button_reset = customtkinter.CTkButton(self.frame_bawah, text="Reset",
@@ -278,6 +282,18 @@ class Welcome:
     def sub_kanan(self):
         self.kanan_score = max(0, self.kanan_score - 1)
         self.label_score2.configure(text=str(self.kanan_score))
+
+    def shikaku_ao(self):
+        messagebox.showinfo("Shikkaku Ao", "Ao didiskualifikasi.")
+
+    def kikken_ao(self):
+        messagebox.showinfo("Kikken Ao", "Ao tidak dapat hadir di dalam pertandingan.")
+
+    def shikaku_aka(self):
+        messagebox.showinfo("Shikkaku Aka", "Aka didiskualifikasi.")
+
+    def kikken_aka(self):
+        messagebox.showinfo("Kikken Aka", "Aka tidak dapat hadir di dalam pertandingan.")
 
 if __name__ == "__main__":
     root = customtkinter.CTk()
