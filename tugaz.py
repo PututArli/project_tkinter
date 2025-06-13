@@ -2,6 +2,7 @@ import tkinter
 from tkinter import messagebox
 import customtkinter
 from PIL import Image
+import time
 
 
 customtkinter.set_appearance_mode("light")
@@ -17,12 +18,16 @@ class Welcome:
         self.frame_tengah.pack(fill="both", expand=True)
 
 
-        self.bg_image = customtkinter.CTkImage(Image.open("welcome.png"), size=(1200, 700))
+        self.bg_image = customtkinter.CTkImage(Image.open("project_tkinter/welcome.png"), size=(1200, 700))
         self.bg_label = customtkinter.CTkLabel(self.frame_tengah, image=self.bg_image, text="")
         self.bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
         self.kiri_score = 0
         self.kanan_score = 0
+
+        self.running = False
+        self.start_timer = 0
+        self.waktu = 180
 
 
         #Text welcome
@@ -70,7 +75,7 @@ class Welcome:
         self.frame_about = customtkinter.CTkFrame(self.root,fg_color="#4e503f")
 
 
-        self.bg_image_about = customtkinter.CTkImage(Image.open("anggota.png"), size=(1200, 700))
+        self.bg_image_about = customtkinter.CTkImage(Image.open("project_tkinter/anggota.png"), size=(1200, 700))
         self.bg_label_about = customtkinter.CTkLabel(self.frame_about, image=self.bg_image_about, text="")
         self.bg_label_about.place(relx=0.5, rely=0.5, anchor="center") 
 
@@ -93,18 +98,19 @@ class Welcome:
         self.frame_sda = customtkinter.CTkFrame(self.root,fg_color="black",width=1000,height=1000)
 
         self.frame_score_kiri = customtkinter.CTkFrame(self.frame_sda,fg_color="#005EFF",width=500,height=500)
-        self.bg_image_benderakiri = customtkinter.CTkImage(Image.open("blue flag.png"), size=(200, 200))
+        self.bg_image_benderakiri = customtkinter.CTkImage(Image.open("project_tkinter/blue flag.png"), size=(200, 200))
         self.bg_label_benderakiri = customtkinter.CTkLabel(self.frame_score_kiri, image=self.bg_image_benderakiri, text="")
         self.bg_label_benderakiri.place(relx=0.7, rely=0.4, anchor="center")
 
         self.frame_score_kanan = customtkinter.CTkFrame(self.frame_sda,fg_color="#FF0000", width=500,height=500)
-        self.bg_image_benderakanan = customtkinter.CTkImage(Image.open("red flag.png"), size=(200, 200))
+        self.bg_image_benderakanan = customtkinter.CTkImage(Image.open("project_tkinter/red flag.png"), size=(200, 200))
         self.bg_label_benderakanan = customtkinter.CTkLabel(self.frame_score_kanan, image=self.bg_image_benderakanan, text="")
         self.bg_label_benderakanan.place(relx=0.3, rely=0.4, anchor="center")
 
         self.frame_atas = customtkinter.CTkFrame(self.frame_sda,fg_color="#000000",width=500, height=100)
         self.frame_bawah = customtkinter.CTkFrame(self.frame_sda, fg_color="#000000",width=500, height=80)
-        
+    
+
 
         # Score
 
@@ -147,7 +153,7 @@ class Welcome:
                                                     hover_color="#25e61e",
                                                     text_color="white",
                                                     command=self.add_kiri)
-        self.button_score11.place(relx=0.165, rely=0.5, anchor="center",
+        self.button_score11.place(relx=0.165, rely=0.55, anchor="center",
                                 relwidth=0.05, relheight=0.04)
         
         self.button_score12 = customtkinter.CTkButton(self.frame_score_kiri, text="-1",
@@ -156,8 +162,21 @@ class Welcome:
                                                     hover_color="#0d2fd8",
                                                     text_color="white",
                                                     command=self.sub_kiri)
-        self.button_score12.place(relx=0.265, rely=0.5, anchor="center",
+        self.button_score12.place(relx=0.265, rely=0.55, anchor="center",
                                 relwidth=0.05, relheight=0.04)
+        
+        self.labeltimerkiri = customtkinter.CTkLabel(self.frame_score_kiri,
+                                                 text= "03:00",
+                                                 font=("Comic Sans", 70),
+                                                 text_color="white")
+        self.labeltimerkiri.place(relx=0.665, rely=0.75, anchor="center",relwidth=0.55, relheight=0.14)
+        self.button_timer_start = customtkinter.CTkButton(self.frame_score_kiri,
+                                                    text= "Start",
+                                                    font=("Comic Sans",30),
+                                                    command=self.start_timer_fn,
+                                                    fg_color="#25bc1f",
+                                                    hover_color="#25e61e")
+        self.button_timer_start.place(relx=0.215, rely=0.75, anchor="center",relwidth=0.15, relheight=0.14)
 
         # nama kanan
         self.label_name2 = customtkinter.CTkLabel(self.frame_atas,
@@ -185,7 +204,7 @@ class Welcome:
                                                     hover_color="#25e61e",
                                                     text_color="white",
                                                     command=self.add_kanan)
-        self.button_score21.place(relx=0.695, rely=0.5, anchor="center",
+        self.button_score21.place(relx=0.695, rely=0.55, anchor="center",
                                 relwidth=0.05, relheight=0.04)
         
         self.button_score22 = customtkinter.CTkButton(self.frame_score_kanan, text="-1",
@@ -194,8 +213,14 @@ class Welcome:
                                                     hover_color="#0d2fd8",
                                                     text_color="white",
                                                     command=self.sub_kanan)
-        self.button_score22.place(relx=0.805, rely=0.5, anchor="center",
+        self.button_score22.place(relx=0.805, rely=0.55, anchor="center",
                                 relwidth=0.05, relheight=0.04)
+        
+        self.labeltimerkanan = customtkinter.CTkLabel(self.frame_score_kanan,
+                                                 text= "03:00",
+                                                 font=("Comic Sans", 70),
+                                                 text_color="white")
+        self.labeltimerkanan.place(relx=0.345, rely=0.75, anchor="center",relwidth=0.55, relheight=0.14)
 
         # Tombol back Score
         self.button_back2 = customtkinter.CTkButton(self.frame_sda, text="Back",
@@ -213,21 +238,21 @@ class Welcome:
                                                         font=("Arial", 14),
                                                         fg_color="green", text_color="white",
                                                         width=140, corner_radius=10)
-        self.button_show_hide.pack(side="left", padx=10, pady=10)
+        self.button_show_hide.pack(side="left", padx=50)
 
         self.button_shikkaku_ao = customtkinter.CTkButton(self.frame_bawah, text="Shikkaku",
                                                           font=("Arial", 14),
                                                           fg_color="#0047ab", text_color="white",
                                                           width=100, corner_radius=10,
                                                           command=self.shikaku_ao)
-        self.button_shikkaku_ao.pack(side="left", padx=10, pady=10)
+        self.button_shikkaku_ao.pack(side="left", padx=50)
 
         self.button_kikken_ao = customtkinter.CTkButton(self.frame_bawah, text="Kikken",
                                                         font=("Arial", 14),
                                                         fg_color="#0047ab", text_color="white",
                                                         width=100, corner_radius=10,
                                                         command=self.kikken_ao)
-        self.button_kikken_ao.pack(side="left", padx=10, pady=10)
+        self.button_kikken_ao.pack(side="left", padx=50)
 
         # Tombol Done di tengah
         self.button_done = customtkinter.CTkButton(self.frame_bawah, text="Done",
@@ -244,7 +269,7 @@ class Welcome:
                                                            width=100, corner_radius=10,
                                                            command=self.shikaku_aka,
                                                            hover_color="#8b0000")
-        self.button_shikkaku_aka.pack(side="left", padx=10, pady=10)
+        self.button_shikkaku_aka.pack(side="left", padx=50)
 
         self.button_kikken_aka = customtkinter.CTkButton(self.frame_bawah, text="Kikken",
                                                          font=("Arial", 14),
@@ -252,13 +277,14 @@ class Welcome:
                                                          width=100, corner_radius=10,
                                                          command=self.kikken_aka,
                                                          hover_color="#8b0000")
-        self.button_kikken_aka.pack(side="left", padx=10, pady=10)
+        self.button_kikken_aka.pack(side="left", padx=70)
 
         self.button_reset = customtkinter.CTkButton(self.frame_bawah, text="Reset",
                                                     font=("Arial", 14, "bold"),
+                                                    command= self.reset_timer,
                                                     fg_color="red", text_color="white",
                                                     width=100, corner_radius=10)
-        self.button_reset.pack(side="left", padx=20, pady=10)
+        self.button_reset.pack(side="left", padx=50, pady=10)
 
     def welcomepage(self):
         self.frame_about.pack_forget()
@@ -318,6 +344,40 @@ class Welcome:
         messagebox.showinfo("Hasil Pertandingan:", f"Divisi: {division}\n"
                             f"Score {nama1} : {self.kiri_score} Poin\n"
                             f"Score {nama2} : {self.kanan_score} Poin\n")
+        
+    def start_time(self):
+        if self.running:
+            self.running = True
+            self.start_timer_kiri = time.time() - self.start_time
+            self.start_timer_kanan = time.time() - self.start_time
+
+    
+    def start_timer_fn(self):
+        if not self.running:
+            self.running = True
+            self.start_time_value = time.time() 
+            self.update_time()
+
+    def update_time(self):
+        if self.running:
+            waktu = time.time() - self.start_time_value
+            sisa = max(0,self.waktu - waktu)  
+            total_detik= int(sisa + 0.5)
+            minutes = int(sisa // 60)
+            seconds = int(sisa % 60)
+            if sisa <=0 :
+                self.labeltimerkiri.configure(text="00:00")
+                self.labeltimerkanan.configure(text="00:00")
+                self.running = False
+                return
+            self.labeltimerkiri.configure(text=f"{minutes:02}:{seconds:02}")
+            self.labeltimerkanan.configure(text=f"{minutes:02}:{seconds:02}")
+            self.root.after(1000, self.update_time)
+    def reset_timer(self):
+        self.running = False
+        self.waktu = 180
+        self.labeltimerkiri.configure(text="03:00")
+        self.labeltimerkanan.configure(text="03:00")
 
 if __name__ == "__main__":
     root = customtkinter.CTk()
