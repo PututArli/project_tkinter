@@ -316,8 +316,8 @@ class Welcome:
             return
         
         messagebox.showinfo("Hasil Pertandingan:", f"Divisi: {division}\n"
-                            f"Score {nama1} : {self.kiri_score}\n"
-                            f"Score {nama2} : {self.kanan_score}")
+                            f"Score {nama1} : {self.kiri_score} Poin\n"
+                            f"Score {nama2} : {self.kanan_score} Poin\n")
 
 if __name__ == "__main__":
     root = customtkinter.CTk()
