@@ -2,7 +2,7 @@ import tkinter
 from tkinter import messagebox
 import customtkinter
 from PIL import Image
-import time
+import time, os, csv
 
 
 customtkinter.set_appearance_mode("light")
@@ -18,7 +18,7 @@ class Welcome:
         self.frame_tengah.pack(fill="both", expand=True)
 
 
-        self.bg_image = customtkinter.CTkImage(Image.open("project_tkinter/welcome.png"), size=(1200, 700))
+        self.bg_image = customtkinter.CTkImage(Image.open("welcome.png"), size=(1200, 700))
         self.bg_label = customtkinter.CTkLabel(self.frame_tengah, image=self.bg_image, text="")
         self.bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -28,6 +28,7 @@ class Welcome:
         self.running = False
         self.start_timer = 0
         self.waktu = 180
+        self.match_count = 1
 
 
         #Text welcome
@@ -75,7 +76,7 @@ class Welcome:
         self.frame_about = customtkinter.CTkFrame(self.root,fg_color="#4e503f")
 
 
-        self.bg_image_about = customtkinter.CTkImage(Image.open("project_tkinter/anggota.png"), size=(1200, 700))
+        self.bg_image_about = customtkinter.CTkImage(Image.open("anggota.png"), size=(1200, 700))
         self.bg_label_about = customtkinter.CTkLabel(self.frame_about, image=self.bg_image_about, text="")
         self.bg_label_about.place(relx=0.5, rely=0.5, anchor="center") 
 
@@ -98,12 +99,12 @@ class Welcome:
         self.frame_sda = customtkinter.CTkFrame(self.root,fg_color="black",width=1000,height=1000)
 
         self.frame_score_kiri = customtkinter.CTkFrame(self.frame_sda,fg_color="#005EFF",width=500,height=500)
-        self.bg_image_benderakiri = customtkinter.CTkImage(Image.open("project_tkinter/blue flag.png"), size=(200, 200))
+        self.bg_image_benderakiri = customtkinter.CTkImage(Image.open("blue flag.png"), size=(200, 200))
         self.bg_label_benderakiri = customtkinter.CTkLabel(self.frame_score_kiri, image=self.bg_image_benderakiri, text="")
         self.bg_label_benderakiri.place(relx=0.7, rely=0.4, anchor="center")
 
         self.frame_score_kanan = customtkinter.CTkFrame(self.frame_sda,fg_color="#FF0000", width=500,height=500)
-        self.bg_image_benderakanan = customtkinter.CTkImage(Image.open("project_tkinter/red flag.png"), size=(200, 200))
+        self.bg_image_benderakanan = customtkinter.CTkImage(Image.open("red flag.png"), size=(200, 200))
         self.bg_label_benderakanan = customtkinter.CTkLabel(self.frame_score_kanan, image=self.bg_image_benderakanan, text="")
         self.bg_label_benderakanan.place(relx=0.3, rely=0.4, anchor="center")
 
@@ -341,9 +342,35 @@ class Welcome:
             messagebox.showwarning("Input Error", "Isi semua kolom!.")
             return
         
-        messagebox.showinfo("Hasil Pertandingan:", f"Divisi: {division}\n"
-                            f"Score {nama1} : {self.kiri_score} Poin\n"
-                            f"Score {nama2} : {self.kanan_score} Poin\n")
+        score_ao = self.kiri_score
+        score_aka = self.kanan_score
+
+        if score_ao > score_aka:
+            hasil = f"{nama1} (Ao) adalah pemenangnya!"
+        elif score_ao < score_aka:
+            hasil = f"{nama2} (Aka) adalah pemenangnya!"
+        else:
+            hasil = "Seri!"
+
+        nama_file = "hasil_match.csv"
+        file_ada = os.path.isfile(nama_file)
+        with open(nama_file, mode="a", newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            if not file_ada:
+                writer.writerow([
+                    "Match", "Division", "Ao (Blue)", "Score Ao", 
+                    "Aka (Red)", "Score Aka", "Hasil Akhir"])
+                
+            writer.writerow([
+                self.match_count, division, nama1, score_ao, nama2, score_aka, hasil])
+        
+        messagebox.showinfo("Hasil Pertandingan:",
+                            f"Match: {self.match_count}\nDivisi: {division}\n"
+                            f"{nama1} (Ao): {score_ao} Poin\n{nama2} (Aka): {score_aka} Poin\n"
+                            f"Hasil Akhir: {hasil}")
+        
+        self.match_count += 1
+        
         
     def start_time(self):
         if self.running:
