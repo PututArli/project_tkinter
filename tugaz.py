@@ -237,12 +237,6 @@ class Welcome:
                                 relwidth=0.05, relheight=0.04)
         
         #tombol kiri
-        self.button_show_hide = customtkinter.CTkButton(self.frame_bawah, text="Show/Hide Stopwatch",
-                                                        font=("Arial", 14),
-                                                        fg_color="green", text_color="white",
-                                                        width=140, corner_radius=10)
-        self.button_show_hide.pack(side="left", padx=50)
-
         self.button_shikkaku_ao = customtkinter.CTkButton(self.frame_bawah, text="Shikkaku",
                                                           font=("Arial", 14),
                                                           fg_color="#0047ab", text_color="white",
