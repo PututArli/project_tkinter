@@ -419,6 +419,10 @@ class Welcome:
         self.waktu = 180
         self.labeltimerkiri.configure(text="03:00")
         self.labeltimerkanan.configure(text="03:00")
+        self.kanan_score = 0
+        self.kiri_score = 0
+        self.label_score1.configure(text="0")
+        self.label_score2.configure(text="0")
 
 if __name__ == "__main__":
     root = customtkinter.CTk()
