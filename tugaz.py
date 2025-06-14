@@ -30,6 +30,8 @@ class Welcome:
         self.waktu = 180
         self.match_count = 1
 
+        self.status_ao = "Normal"
+        self.status_aka = "Normal"
 
         #Text welcome
         self.label_welcome = customtkinter.CTkLabel(self.frame_tengah,
@@ -322,16 +324,26 @@ class Welcome:
         self.label_score2.configure(text=str(self.kanan_score))
 
     def shikaku_ao(self):
-        messagebox.showinfo("Shikkaku Ao", "Ao didiskualifikasi.")
+        self.status_ao = "Shikkaku"
+        self.kiri_score = 0
+        messagebox.showinfo("Shikkaku Ao", "Ao didiskualifikasi. Aka menang otomatis.")
+        self.label_score1.configure(text="0")
 
     def kikken_ao(self):
-        messagebox.showinfo("Kikken Ao", "Ao tidak dapat hadir di dalam pertandingan.")
+        self.status_ao = "Kikken"
+        self.kiri_score = 0
+        self.label_score1.configure(text="0")
 
     def shikaku_aka(self):
-        messagebox.showinfo("Shikkaku Aka", "Aka didiskualifikasi.")
+        self.status_aka = "Shikkaku"
+        self.kanan_score = 0
+        messagebox.showinfo("Shikkaku Aka", "Aka didiskualifikasi. Ao menang otomatis.")
+        self.label_score2.configure(text="0")
 
     def kikken_aka(self):
-        messagebox.showinfo("Kikken Aka", "Aka tidak dapat hadir di dalam pertandingan.")
+        self.status_aka = "Kikken"
+        self.kanan_score = 0
+        self.label_score2.configure(text="0")
 
     def done(self):
         division = self.entry_division.get()
@@ -345,7 +357,11 @@ class Welcome:
         score_ao = self.kiri_score
         score_aka = self.kanan_score
 
-        if score_ao > score_aka:
+        if self.status_ao in ["Shikkaku", "Kikken"]:
+            hasil = f"{nama2} (Aka) menang karena {self.status_ao.lower()} Ao"
+        elif self.status_aka in ["Shikkaku", "Kikken"]:
+            hasil = f"{nama1} (Ao) menang karena {self.status_aka.lower()} Aka"
+        elif score_ao > score_aka:
             hasil = f"{nama1} (Ao) adalah pemenangnya!"
         elif score_ao < score_aka:
             hasil = f"{nama2} (Aka) adalah pemenangnya!"
@@ -360,7 +376,7 @@ class Welcome:
                 writer.writerow([
                     "Match", "Division", "Ao (Blue)", "Score Ao", 
                     "Aka (Red)", "Score Aka", "Hasil Akhir"])
-                
+               
             writer.writerow([
                 self.match_count, division, nama1, score_ao, nama2, score_aka, hasil])
         
@@ -370,6 +386,10 @@ class Welcome:
                             f"Hasil Akhir: {hasil}")
         
         self.match_count += 1
+
+        self.status_ao = "Normal"
+        self.status_aka = "Normal"
+        self.running = False
         
         
     def start_time(self):

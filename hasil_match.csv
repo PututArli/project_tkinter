@@ -4,3 +4,8 @@ Match,Division,Ao (Blue),Score Ao,Aka (Red),Score Aka,Winner
 1,nfdnf,jnd,4,frgfg,0,jnd (Ao) adalah pemenangnya!
 2,nfdnf,jnd,4,frgfg,7,frgfg (Aka) adalah pemenangnya!
 3,nfdnf,jnd,4,frgfg,4,Seri!
+1,karate,ao,0,aka,4,aka (Aka) menang karena shikkaku Ao
+1,karate,a0,3,aka,0,a0 (Ao) menang karena shikkaku Aka
+2,karate,a0,3,aka,0,a0 (Ao) adalah pemenangnya!
+1,aa,ao,0,aka,0,aka (Aka) menang karena kikken Ao
+1,aa,ao,6,aka,2,ao (Ao) adalah pemenangnya!
