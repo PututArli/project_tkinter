@@ -368,9 +368,9 @@ class Welcome:
         score_aka = self.kanan_score
 
         if self.status_ao in ["Shikkaku", "Kikken"]:
-            hasil = f"{nama2} (Aka) menang karena {self.status_ao.lower()} Ao"
+            hasil = f"{nama2} (Aka) menang karena Ao {self.status_ao.lower()}"
         elif self.status_aka in ["Shikkaku", "Kikken"]:
-            hasil = f"{nama1} (Ao) menang karena {self.status_aka.lower()} Aka"
+            hasil = f"{nama1} (Ao) menang karena Aka {self.status_aka.lower()}"
         elif score_ao > score_aka:
             hasil = f"{nama1} (Ao) adalah pemenangnya!"
         elif score_ao < score_aka:
