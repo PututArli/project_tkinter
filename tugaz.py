@@ -353,6 +353,7 @@ class Welcome:
     def kikken_aka(self):
         self.status_aka = "Kikken"
         self.kanan_score = 0
+        messagebox.showinfo("Kikken Aka","Peserta tidak dapat hadir")
         self.label_score2.configure(text="0")
 
     def done(self):
